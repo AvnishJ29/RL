@@ -127,11 +127,12 @@ class DQN:
         not_done_no_max = torch.FloatTensor(not_done_no_max_np).to(DEVICE)
 
         with torch.no_grad():
-            q_next   = self.q_net_tgt(next_obs).max(dim=-1, keepdim=True)[0]
+            best_next_actions = self.q_net(next_obs).argmax(dim=-1, keepdim=True)
+            q_next = self.q_net_tgt(next_obs).gather(1, best_next_actions)
             q_target = rewards + self.gamma * not_done_no_max * q_next
 
         q_pred = self.q_net(obs).gather(1, actions.unsqueeze(1))
-        loss   = F.mse_loss(q_pred, q_target)
+        loss = F.smooth_l1_loss(q_pred, q_target)
 
         self.optimizer.zero_grad()
         loss.backward()
