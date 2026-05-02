@@ -103,7 +103,7 @@ class SACDiscrete:
 
         # ── Auto-alpha (Christodoulou 2019) ──────────────────────────────────
         # target H = 0.98 * log|A|  (slightly below maximum entropy)
-        self.target_entropy = 0.98 * np.log(n_actions)
+        self.target_entropy = 0.05 * np.log(n_actions)
         self.log_alpha = torch.tensor(
             np.log(init_alpha), dtype=torch.float32,
             requires_grad=True, device=DEVICE,
