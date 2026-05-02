@@ -62,8 +62,8 @@ N_SEEDS       = 15
 EVAL_FREQ     = 10_000
 EVAL_EPISODES = 20
 LOG_DIR       = "logs"
-TOTAL_STEPS   = 300_000   # Q1 and Q4
-PHASE_STEPS   = 200_000   # per phase in Q3
+TOTAL_STEPS   = 600_000   # Q1 and Q4
+PHASE_STEPS   = 300_000   # per phase in Q3
 
 os.makedirs(LOG_DIR,   exist_ok=True)
 os.makedirs("plots",   exist_ok=True)
