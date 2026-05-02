@@ -103,7 +103,7 @@ class SACDiscrete:
 
         # ── Auto-alpha (Christodoulou 2019) ──────────────────────────────────
         # target H = 0.98 * log|A|  (slightly below maximum entropy)
-        self.target_entropy = 0.05 * np.log(n_actions)
+        self.target_entropy = 0.2 * np.log(n_actions)
         self.log_alpha = torch.tensor(
             np.log(init_alpha), dtype=torch.float32,
             requires_grad=True, device=DEVICE,
@@ -161,7 +161,7 @@ class SACDiscrete:
         obs              = torch.FloatTensor(obs_np).to(DEVICE)
         next_obs         = torch.FloatTensor(next_obs_np).to(DEVICE)
         actions          = torch.LongTensor(actions_np).to(DEVICE)        # (B,)
-        rewards          = torch.FloatTensor(rewards_np).to(DEVICE)
+        rewards          = torch.FloatTensor(rewards_np).to(DEVICE)/10.0  # reward scaling
         not_done_no_max  = torch.FloatTensor(not_done_no_max_np).to(DEVICE)
 
         # ── Critic update ─────────────────────────────────────────────────────
