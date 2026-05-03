@@ -121,7 +121,7 @@ class SACDiscrete:
         #   0.50 * log(4) ≈ 0.693  → policy can be decisive but still explores
         #   0.20 * log(4) ≈ 0.277  → alpha collapses to ~0, turns off exploration
         #   0.98 * log(4) ≈ 1.359  → forces near-uniform, too slow to learn
-        self.target_entropy = 0.5 * np.log(n_actions)   # ≈ 0.693 for 4 actions
+        self.target_entropy = 0.98 * np.log(n_actions)   # ≈ 0.693 for 4 actions
 
         self.log_alpha = torch.tensor(
             np.log(init_alpha), dtype=torch.float32,
