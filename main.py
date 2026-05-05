@@ -57,7 +57,7 @@ from plot           import load_seed_logs, aggregate_logs, plot_curves, plot_hov
 # Global constants
 # ─────────────────────────────────────────────────────────────────────────────
 
-SEEDS         = [31, 51, 14]
+SEEDS         = [53, 47, 74]
 N_SEEDS       = 15
 EVAL_FREQ     = 10_000
 EVAL_EPISODES = 20
